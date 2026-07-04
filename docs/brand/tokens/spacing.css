@@ -1,0 +1,24 @@
+/* ============================================================
+   CHROMADYNE INDUSTRIES — SPACING
+   A strict 8px grid. The institution measures in even increments;
+   half-steps (4px) are permitted only for optical correction.
+   ============================================================ */
+:root {
+  --space-0:    0;
+  --space-1:    4px;    /* optical only */
+  --space-2:    8px;    /* base unit */
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    24px;   /* standard gutter */
+  --space-6:    32px;
+  --space-7:    44px;
+  --space-8:    56px;
+  --space-9:    72px;   /* section vertical rhythm */
+  --space-10:   96px;
+
+  /* --- Layout --- */
+  --gutter:       24px;  /* .wrap horizontal padding */
+  --maxw:         1080px;
+  --section-y:    72px;  /* vertical padding between sections */
+  --maxw-prose:   760px;
+}

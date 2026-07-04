@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img" aria-label="Chromadyne mark">
+  <rect width="120" height="120" fill="#17140E"></rect>
+  <g fill="none" stroke-width="16">
+    <circle cx="120" cy="120" r="26" stroke="#D9341C"></circle>
+    <circle cx="120" cy="120" r="52" stroke="#E87B1E"></circle>
+    <circle cx="120" cy="120" r="78" stroke="#DFA41B"></circle>
+    <circle cx="120" cy="120" r="104" stroke="#24539B"></circle>
+  </g>
+</svg>

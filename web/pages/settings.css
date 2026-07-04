@@ -128,12 +128,12 @@ h2 {
     }
 .message.success {
       background-color: rgba(22, 163, 74, 0.1);
-      color: #15803d;
+      color: #1C4079;
       border: 1px solid rgba(22, 163, 74, 0.25);
     }
 .message.error {
       background-color: rgba(220, 38, 38, 0.08);
-      color: #b91c1c;
+      color: #B22815;
       border: 1px solid rgba(220, 38, 38, 0.25);
     }
 .opds-server {

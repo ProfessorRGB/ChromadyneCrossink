@@ -1,0 +1,59 @@
+/* ============================================================
+   CHROMADYNE INDUSTRIES — COLOR
+   Four working colors, recognized by the Charter (Art. IV):
+   Signal Red, Carrier Orange, Reference Gold, Continuity Blue.
+   Ground colors: Paper (substrate) and Ink (mark).
+   ============================================================ */
+:root {
+  /* --- Ground --- */
+  --paper:        #EFEAE0;  /* substrate — warm off-white */
+  --paper-2:      #E5DFD2;  /* recessed paper / hover wash */
+  --ink:          #17140E;  /* the mark — near-black, warm */
+  --ink-2:        #2A2620;  /* raised ink panels */
+
+  /* --- The four working colors --- */
+  --red:          #D9341C;  /* Signal Red    — active, public-facing */
+  --orange:       #E87B1E;  /* Carrier Orange — transport, in-transit */
+  --gold:         #DFA41B;  /* Reference Gold — standards, reference */
+  --blue:         #24539B;  /* Continuity Blue — standing, archive */
+
+  /* --- Tints / shades for states --- */
+  --red-deep:     #B22815;
+  --orange-deep:  #C26413;
+  --gold-deep:    #B98710;
+  --blue-deep:    #1C4079;
+
+  /* --- Neutrals derived from ink on paper --- */
+  --ink-70:       rgba(23, 20, 14, 0.70);
+  --ink-50:       rgba(23, 20, 14, 0.50);
+  --ink-25:       rgba(23, 20, 14, 0.25);
+  --ink-12:       rgba(23, 20, 14, 0.12);
+  --paper-70:     rgba(239, 234, 224, 0.70);
+  --paper-25:     rgba(239, 234, 224, 0.25);
+
+  /* ============================================================
+     SEMANTIC ALIASES — reach for these in components
+     ============================================================ */
+  --surface-base:     var(--paper);
+  --surface-sunk:     var(--paper-2);
+  --surface-ink:      var(--ink);     /* inverted panels, footers */
+  --surface-card:     var(--paper);
+
+  --text-primary:     var(--ink);
+  --text-secondary:   var(--ink-70);
+  --text-muted:       var(--ink-50);
+  --text-on-ink:      var(--paper);
+  --text-on-ink-dim:  var(--paper-70);
+
+  --border-rule:      var(--ink);     /* the 2px institutional rule */
+  --border-hair:      var(--ink-25);
+
+  /* Status — mapped to the working colors */
+  --status-active:    var(--red);     /* active / accepting */
+  --status-standing:  var(--blue);    /* standing / archived */
+  --status-transit:   var(--orange);  /* in transit */
+  --status-reference: var(--gold);    /* reference / standards */
+
+  --accent:           var(--red);     /* default brand accent */
+  --focus-ring:       var(--blue);
+}

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="120" viewBox="0 0 560 120" role="img" aria-label="Chromadyne Industries">
+  <rect width="120" height="120" fill="none"></rect>
+  <g fill="none" stroke-width="16">
+    <circle cx="120" cy="120" r="26" stroke="#D9341C"></circle>
+    <circle cx="120" cy="120" r="52" stroke="#E87B1E"></circle>
+    <circle cx="120" cy="120" r="78" stroke="#DFA41B"></circle>
+    <circle cx="120" cy="120" r="104" stroke="#24539B"></circle>
+  </g>
+  <text x="152" y="62" font-family="&#39;Archivo Black&#39;,&#39;Helvetica Neue&#39;,Arial,sans-serif" font-size="48" letter-spacing="1" fill="#DFA41B" font-weight="900">CHROMADYNE</text>
+  <text x="154" y="92" font-family="&#39;IBM Plex Mono&#39;,monospace" font-size="18" letter-spacing="6.5" fill="#EFEAE0">INDUSTRIES · EST. 1949</text>
+</svg>

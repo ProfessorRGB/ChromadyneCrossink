@@ -77,13 +77,13 @@ h3 {
 .status-ok {
         background: rgba(22, 163, 74, 0.1);
         border: 1px solid rgba(22, 163, 74, 0.25);
-        color: #15803d;
+        color: #1C4079;
         display: block !important;
       }
 .status-err {
         background: rgba(220, 38, 38, 0.08);
         border: 1px solid rgba(220, 38, 38, 0.25);
-        color: #b91c1c;
+        color: #B22815;
         display: block !important;
       }
 .empty { color: var(--label-color); text-align: center; padding: 20px; }

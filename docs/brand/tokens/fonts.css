@@ -1,0 +1,13 @@
+/* ============================================================
+   CHROMADYNE INDUSTRIES — WEBFONTS
+   ------------------------------------------------------------
+   DISPLAY:  The brand spec is "Neue Haas Grotesk Display Pro
+             95 Black". That is a licensed typeface and is NOT
+             bundled here. The web substitute in active use is
+             Archivo Black (Google Fonts) — a heavy geometric
+             grotesk with comparable weight and width.
+             >>> Replace with licensed Neue Haas files for print.
+   SANS:     IBM Plex Sans   (Google Fonts, open source)
+   MONO:     IBM Plex Mono   (Google Fonts, open source)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');

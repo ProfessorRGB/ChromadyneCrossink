@@ -1,0 +1,35 @@
+/* ============================================================
+   CHROMADYNE INDUSTRIES — EFFECTS
+   Borders, radii, shadows, motion.
+   House style: hard 2px rules, square corners, NO soft shadows.
+   The one permitted shadow is a hard "offset block" (no blur),
+   used to flag the active / public-facing unit.
+   ============================================================ */
+:root {
+  /* --- Borders --- */
+  --bw:           2px;                       /* the institutional rule weight */
+  --rule:         var(--bw) solid var(--ink);
+  --rule-hair:    1px solid var(--ink-25);
+  --rule-dashed:  var(--bw) dashed var(--ink); /* "special / classified" */
+
+  /* --- Radii --- */
+  --radius-0:     0;       /* default — everything is square */
+  --radius-dot:   50%;     /* status dots, the corner pellet */
+  /* The brand is square. Rounded corners are reserved for dots only. */
+
+  /* --- Shadows --- */
+  --shadow-none:  none;
+  --shadow-block:        6px 6px 0 var(--red);   /* hard offset — active unit */
+  --shadow-block-ink:    6px 6px 0 var(--ink);
+  --shadow-block-sm:     4px 4px 0 var(--ink);
+  --shadow-block-blue:   6px 6px 0 var(--blue);
+
+  /* --- Motion --- */
+  --ease-draw:    cubic-bezier(0.6, 0, 0.2, 1); /* @kind other */
+  --dur-fast:     0.12s; /* @kind other */
+  --dur-base:     0.24s; /* @kind other */
+  --dur-draw:     1.4s; /* @kind other */
+
+  /* --- Chroma band --- */
+  --band-h:       10px;    /* the four-color rule height */
+}
