@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          token: ${{ secrets.RELEASE_PAT }}
+          token: ${{ secrets.RELEASE_PAT || github.token }}
           submodules: recursive
           fetch-depth: 0
 
@@ -82,39 +82,40 @@ jobs:
       - name: Publish catalog to GitHub Pages source
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          CROSSINK_SIGNING_SSH_KEY: ${{ secrets.CROSSINK_SIGNING_SSH_KEY }}
+          SIGNING_SSH_KEY: ${{ secrets.SIGNING_SSH_KEY }}
         run: |
-          if [ -z "$CROSSINK_SIGNING_SSH_KEY" ]; then
-            echo "::error::CROSSINK_SIGNING_SSH_KEY is not set"
-            exit 1
+          git config user.name "ProfessorRGB"
+          git config user.email "nate.phillips@me.com"
+
+          # Sign the catalog commit when a signing key is configured;
+          # otherwise commit unsigned.
+          SIGN_FLAG=""
+          if [ -n "$SIGNING_SSH_KEY" ]; then
+            install -m 700 -d ~/.ssh
+            printf '%s\n' "$SIGNING_SSH_KEY" > ~/.ssh/actions_signing
+            chmod 600 ~/.ssh/actions_signing
+            ssh-keygen -y -f ~/.ssh/actions_signing > ~/.ssh/actions_signing.pub
+            git config gpg.format ssh
+            git config user.signingkey "$HOME/.ssh/actions_signing.pub"
+            SIGN_FLAG="-S"
           fi
 
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "$CROSSINK_SIGNING_SSH_KEY" > ~/.ssh/crossink_actions_signing
-          chmod 600 ~/.ssh/crossink_actions_signing
-          ssh-keygen -y -f ~/.ssh/crossink_actions_signing > ~/.ssh/crossink_actions_signing.pub
-
-          git config user.name "uxjulia"
-          git config user.email "julia@uxj.io"
-          git config gpg.format ssh
-          git config user.signingkey "$HOME/.ssh/crossink_actions_signing.pub"
-
           git fetch origin "$DEFAULT_BRANCH"
-          git worktree add ../crossink-pages "origin/$DEFAULT_BRANCH"
-          cp ".pio/build/catalog" "../crossink-pages/docs/catalog"
-          cd ../crossink-pages
+          git worktree add ../pages-worktree "origin/$DEFAULT_BRANCH"
+          cp ".pio/build/catalog" "../pages-worktree/docs/catalog"
+          cd ../pages-worktree
           if git diff --quiet -- docs/catalog; then
             echo "docs/catalog is already current"
             exit 0
           fi
           git add docs/catalog
-          git commit -S -m "Update release manifests for v${RELEASE_VERSION}"
+          git commit $SIGN_FLAG -m "Update release manifests for v${RELEASE_VERSION}"
           git push origin "HEAD:$DEFAULT_BRANCH"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
         with:
-          token: ${{ secrets.RELEASE_PAT }}
+          token: ${{ secrets.RELEASE_PAT || github.token }}
           tag_name: v${{ env.RELEASE_VERSION }}
           target_commitish: ${{ github.sha }}
           draft: true
