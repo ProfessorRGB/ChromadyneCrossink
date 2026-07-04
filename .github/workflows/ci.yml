@@ -76,7 +76,7 @@ jobs:
       - name: Verify PlatformIO Core
         run: pio --version
 
-      - name: Build CrossInk tiny
+      - name: Build Chromadyne DRU tiny
         run: |
           set -euo pipefail
           pio run -e tiny | tee pio.log

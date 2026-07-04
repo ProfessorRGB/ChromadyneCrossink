@@ -121,7 +121,7 @@ def inject_version(env):
         branch = get_git_branch(project_dir)
         version_string = f'{base_version}-dev+{branch}'
         env.Append(CPPDEFINES=[('CROSSINK_VERSION', f'\\"{version_string}\\"')])
-        print(f'CrossInk build version: {version_string}')
+        print(f'Chromadyne DRU build version: {version_string}')
 
     elif pioenv == 'debug':
         branch = get_git_branch(project_dir)
@@ -133,7 +133,7 @@ def inject_version(env):
             ('CROSSINK_BUILD_ENV', '\\"debug\\"'),
             'CROSSINK_SHOW_SLEEP_BUILD_INFO',
         ])
-        print(f'CrossInk test build version: {ci_version}{suffix}')
+        print(f'Chromadyne DRU test build version: {ci_version}{suffix}')
 
     elif pioenv == 'test':
         branch = get_git_branch(project_dir)
@@ -143,7 +143,7 @@ def inject_version(env):
         env.Append(CPPDEFINES=[
             ('CROSSINK_VERSION', f'\\"{ci_version}{suffix}\\"'),
         ])
-        print(f'CrossInk test build version: {ci_version}{suffix}')
+        print(f'Chromadyne DRU test build version: {ci_version}{suffix}')
 
     elif pioenv == 'gh_release_rc':
         # CI passes CROSSPOINT_RC_HASH as an env var; locally we derive it from git.
@@ -153,7 +153,7 @@ def inject_version(env):
         env.Append(CPPDEFINES=[
             ('CROSSINK_VERSION', f'\\"{ci_version}{rc_suffix}\\"'),
         ])
-        print(f'CrossInk RC build version: {ci_version}{rc_suffix}')
+        print(f'Chromadyne DRU RC build version: {ci_version}{rc_suffix}')
 
 
 # PlatformIO/SCons entry point — Import and env are SCons builtins injected at runtime.

@@ -1080,14 +1080,14 @@ bool Epub::loadCrossInkLocations() {
     return false;
   }
   if (manifestSize == 0 || manifestSize > kCrossInkLocationsMaxBytes) {
-    LOG_ERR("EBP", "Ignoring CrossInk locations manifest with unsupported size: %zu bytes", manifestSize);
+    LOG_ERR("EBP", "Ignoring Chromadyne DRU locations manifest with unsupported size: %zu bytes", manifestSize);
     return false;
   }
 
   size_t bytesRead = 0;
   uint8_t* manifestData = readItemContentsToBytes(kCrossInkLocationsPath, &bytesRead, true);
   if (!manifestData) {
-    LOG_ERR("EBP", "Failed to read CrossInk locations manifest");
+    LOG_ERR("EBP", "Failed to read Chromadyne DRU locations manifest");
     return false;
   }
 
@@ -1096,7 +1096,7 @@ bool Epub::loadCrossInkLocations() {
   free(manifestData);
 
   if (err) {
-    LOG_ERR("EBP", "CrossInk locations parse error: %s", err.c_str());
+    LOG_ERR("EBP", "Chromadyne DRU locations parse error: %s", err.c_str());
     return false;
   }
 
@@ -1109,7 +1109,7 @@ bool Epub::loadCrossInkLocations() {
   JsonArrayConst spine = doc["spine"];
 
   if (std::strcmp(format, "crossink-locations") != 0 || version != 1 || parsedTotalLocations == 0 || spine.isNull()) {
-    LOG_ERR("EBP", "Ignoring unsupported CrossInk locations manifest");
+    LOG_ERR("EBP", "Ignoring unsupported Chromadyne DRU locations manifest");
     return false;
   }
 
@@ -1131,7 +1131,7 @@ bool Epub::loadCrossInkLocations() {
       continue;
     }
     if (startLocation == 0 || endLocation < startLocation || endLocation > parsedTotalLocations) {
-      LOG_ERR("EBP", "Ignoring invalid CrossInk location range at spine %d", index);
+      LOG_ERR("EBP", "Ignoring invalid Chromadyne DRU location range at spine %d", index);
       continue;
     }
 
@@ -1152,7 +1152,7 @@ bool Epub::loadCrossInkLocations() {
     totalReferencePages = (totalWords + wordsPerReferencePage - 1) / wordsPerReferencePage;
   }
   crossinkLocationsLoaded = true;
-  LOG_INF("EBP", "Loaded CrossInk locations: %lu locations, %lu reference pages across %zu spine items",
+  LOG_INF("EBP", "Loaded Chromadyne DRU locations: %lu locations, %lu reference pages across %zu spine items",
           static_cast<unsigned long>(totalLocations), static_cast<unsigned long>(totalReferencePages),
           locationSpine.size());
   return true;

@@ -241,9 +241,9 @@ void applyLegacyFrontButtonLayout(CrossPointSettings& settings) {
 }  // namespace
 
 const char* CrossPointSettings::getDefaultDeviceName() {
-  if (gpio.deviceIsX3()) return "CrossInk X3";
-  if (gpio.deviceIsX4()) return "CrossInk X4";
-  return "CrossInk";
+  if (gpio.deviceIsX3()) return "Chromadyne DRU X3";
+  if (gpio.deviceIsX4()) return "Chromadyne DRU X4";
+  return "Chromadyne DRU";
 }
 
 const char* CrossPointSettings::getEffectiveDeviceName() const {
@@ -407,7 +407,7 @@ bool CrossPointSettings::loadFromFile() {
     return JsonLoadStatus::MissingOrEmpty;
   };
 
-  // Prefer CrossInk's namespaced settings file. Use the old generic file only
+  // Prefer Chromadyne DRU's namespaced settings file. Use the old generic file only
   // as a migration fallback so other firmware can keep its own settings.json.
   JsonLoadStatus jsonStatus = loadJsonSettings(SETTINGS_FILE_JSON, false);
   if (jsonStatus != JsonLoadStatus::MissingOrEmpty) return jsonStatus == JsonLoadStatus::Loaded;

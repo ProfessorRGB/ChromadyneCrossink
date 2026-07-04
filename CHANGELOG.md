@@ -1,4 +1,7 @@
 # Changelog
+
+> Entries up to and including v1.3.4 predate the Chromadyne rebrand and document this firmware's history under its previous name, CrossInk. They are preserved as-is.
+
 ## [v1.3.4] - 2026-06-24
 
 ### Added

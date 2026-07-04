@@ -3,7 +3,7 @@
 
   if (currentPath !== '/') {
     const leaf = currentPath.split('/').filter(Boolean).pop();
-    if (leaf) document.title = leaf + ' - Files - CrossInk Reader';
+    if (leaf) document.title = leaf + ' - Files - Chromadyne DRU';
   }
 
   // Network status monitoring
@@ -91,7 +91,7 @@
   }
 
   async function hydrate() {
-    // Fetch CrossInk version
+    // Fetch Chromadyne DRU version
     fetchVersion();
 
     // Close modals when clicking overlay - call proper cleanup functions
@@ -1378,7 +1378,7 @@ const logSection = document.getElementById('log-section');
 const logContainer = document.getElementById('log-container');
 const exportLogCheckbox = document.getElementById('export-log-checkbox');
 
-// CrossInk version (fetched from API)
+// Chromadyne DRU version (fetched from API)
 let crosspointVersion = 'Unknown';
 
 // Fetch version from API
@@ -1724,7 +1724,7 @@ function exportLogToFile(filename = null, isBatch = false) {
   }
   // Extract text from log entries
   const entries = logContainer.querySelectorAll('.log-entry');
-  let logText = `CrossInk Reader ${crosspointVersion} - EPUB Conversion Log\n`;
+  let logText = `Chromadyne DRU ${crosspointVersion} - EPUB Conversion Log\n`;
   logText += `Generated: ${new Date().toLocaleString()}\n`;
   logText += `${'='.repeat(60)}\n\n`;
 
@@ -2972,7 +2972,7 @@ async function convertEpubFile(file, progressCallback) {
         let modified = false;
 
         // Remove width/height attributes from ALL img tags (dimensions may have changed)
-        // This prevents CrossInk and other readers from using wrong dimensions
+        // This prevents Chromadyne DRU and other readers from using wrong dimensions
         const allImgElements = doc.querySelectorAll('img');
         for (const img of allImgElements) {
           if (img.hasAttribute('width')) { img.removeAttribute('width'); modified = true; }
@@ -3135,7 +3135,7 @@ async function convertEpubFile(file, progressCallback) {
         compressionOptions: { level: 8 },
         createFolders: false
       });
-      logFix('CrossInk locations',
+      logFix('Chromadyne DRU locations',
              `${locationManifest.totalLocations} locations, ${locationManifest.totalReferencePages} reference pages`);
     }
   }

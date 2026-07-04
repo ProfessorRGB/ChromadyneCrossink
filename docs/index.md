@@ -3,11 +3,11 @@ title: Home
 nav_order: 1
 ---
 
-# CrossInk
+# Chromadyne Document Retrieval Unit
 
-Welcome to CrossInk, a personal fork of CrossPoint Reader.
+Welcome to the Chromadyne Document Retrieval Unit (Chromadyne DRU) — Chromadyne-themed firmware based on CrossInk, a personal fork of CrossPoint Reader.
 
-[View on GitHub](https://github.com/uxjulia/CrossInk)
+[View on GitHub](https://github.com/ProfessorRGB/ChromadyneCrossink)
 
 ## User Docs
 

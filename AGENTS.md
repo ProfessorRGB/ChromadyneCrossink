@@ -1,4 +1,4 @@
-# CrossInk — Shared Agent Guide
+# Chromadyne DRU — Shared Agent Guide
 
 This is the canonical repo instruction file.
 `CLAUDE.md` should point here so Codex and Claude read the same guidance.
