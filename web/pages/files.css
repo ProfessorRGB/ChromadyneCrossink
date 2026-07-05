@@ -983,10 +983,13 @@ h2 {
     .rename-btn,
     .move-btn {
       background: none;
-      border: none;
+      border: 2px solid currentColor;
       cursor: pointer;
-      font-size: 1.1em;
-      padding: 4px 8px;
+      font-family: var(--font-mono);
+      font-size: 0.68em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 3px 6px;
       border-radius: 0;
       transition: all 0.15s;
     }
@@ -994,20 +997,23 @@ h2 {
       color: #8A857B;
     }
 .delete-btn:hover {
-      background-color: #fee;
-      color: #D9341C;
+      background-color: #D9341C;
+      border-color: #D9341C;
+      color: var(--bg);
     }
 .rename-btn {
       color: #1C4079;
     }
 .rename-btn:hover {
-      background-color: #E2E7F0;
+      background-color: #1C4079;
+      color: var(--bg);
     }
 .move-btn {
       color: #1C4079;
     }
 .move-btn:hover {
-      background-color: #E7E4DA;
+      background-color: #1C4079;
+      color: var(--bg);
     }
 .actions-col {
       width: 140px;

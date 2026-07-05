@@ -114,9 +114,9 @@
 
     let breadcrumbContent = '<span class="sep">/</span>';
     if (currentPath === '/') {
-      breadcrumbContent += '<span class="current">🏠</span>';
+      breadcrumbContent += '<span class="current">Root</span>';
     } else {
-      breadcrumbContent += '<a href="/files">🏠</a>';
+      breadcrumbContent += '<a href="/files">Root</a>';
       const pathSegments = currentPath.split('/');
       pathSegments.slice(1, pathSegments.length - 1).forEach(function(segment, index) {
         breadcrumbContent += '<span class="sep">/</span><a href="/files?path=' + encodeURIComponent(pathSegments.slice(0, index + 2).join('/')) + '">' + escapeHtml(segment) + '</a>';
@@ -178,10 +178,10 @@
          // Checkbox cell + folder row
           fileTableContent += `<tr class="folder-row">`;
           fileTableContent += `<td><input type="checkbox" class="select-item" data-path="${encodeURIComponent(folderPath)}" data-name="${escapeHtml(file.name)}" data-type="folder"></td>`;
-          fileTableContent += `<td><span class="file-icon">📁</span><a href="/files?path=${encodeURIComponent(folderPath)}" class="folder-link">${escapeHtml(file.name)}</a></td>`;
+          fileTableContent += `<td><a href="/files?path=${encodeURIComponent(folderPath)}" class="folder-link">${escapeHtml(file.name)}</a></td>`;
           fileTableContent += '<td><span class="folder-badge">FOLDER</span></td>';
           fileTableContent += '<td>-</td>';
-          fileTableContent += `<td class="actions-col"><div class="action-icon-group"><button class="delete-btn" onclick="openDeleteModal('${file.name.replaceAll("'", "\\'")}', '${folderPath.replaceAll("'", "\\'")}', true)" title="Delete folder">🗑️</button></div></td>`;
+          fileTableContent += `<td class="actions-col"><div class="action-icon-group"><button class="delete-btn" onclick="openDeleteModal('${file.name.replaceAll("'", "\\'")}', '${folderPath.replaceAll("'", "\\'")}', true)" title="Delete folder">DEL</button></div></td>`;
           fileTableContent += '</tr>';
         } else {
           let filePath = currentPath;
@@ -191,15 +191,15 @@
           // Checkbox cell + file row
           fileTableContent += `<tr class="${file.isEpub ? 'epub-file' : ''}">`;
           fileTableContent += `<td><input type="checkbox" class="select-item" data-path="${encodeURIComponent(filePath)}" data-name="${escapeHtml(file.name)}" data-type="file"></td>`;
-          fileTableContent += `<td><span class="file-icon">${file.isEpub ? '📗' : '📄'}</span>`;
+          fileTableContent += `<td>`;
           fileTableContent += `<a rel="noopener noreferrer" target="_blank" href="/download?path=${encodeURIComponent(filePath)}" class="file-link">${escapeHtml(file.name)}</a>`;
           fileTableContent += '</td>';
           fileTableContent += file.isEpub ? '<td><span class="epub-badge">EPUB</span></td>' : `<td>${escapeHtml(file.name.split('.').pop().toUpperCase())}</td>`;
           fileTableContent += `<td>${formatFileSize(file.size)}</td>`;
           fileTableContent += `<td class="actions-col"><div class="action-icon-group">`;
-          fileTableContent += `<button class="move-btn" onclick="openMoveModal('${file.name.replaceAll("'", "\\'")}', '${filePath.replaceAll("'", "\\'")}' )" title="Move file">📂</button>`;
-          fileTableContent += `<button class="rename-btn" onclick="openRenameModal('${file.name.replaceAll("'", "\\'")}', '${filePath.replaceAll("'", "\\'")}' )" title="Rename file">✏️</button>`;
-          fileTableContent += `<button class="delete-btn" onclick="openDeleteModal('${file.name.replaceAll("'", "\\'")}', '${filePath.replaceAll("'", "\\'")}', false)" title="Delete file">🗑️</button>`;
+          fileTableContent += `<button class="move-btn" onclick="openMoveModal('${file.name.replaceAll("'", "\\'")}', '${filePath.replaceAll("'", "\\'")}' )" title="Move file">MOVE</button>`;
+          fileTableContent += `<button class="rename-btn" onclick="openRenameModal('${file.name.replaceAll("'", "\\'")}', '${filePath.replaceAll("'", "\\'")}' )" title="Rename file">REN</button>`;
+          fileTableContent += `<button class="delete-btn" onclick="openDeleteModal('${file.name.replaceAll("'", "\\'")}', '${filePath.replaceAll("'", "\\'")}', false)" title="Delete file">DEL</button>`;
           fileTableContent += `</div></td>`;
           fileTableContent += '</tr>';
         }
@@ -235,7 +235,7 @@
     const logContainer = document.getElementById('log-container');
     if (logContainer) logContainer.innerHTML = '';
 
-    document.getElementById('uploadPathDisplay').textContent = currentPath === '/' ? '/ 🏠' : currentPath;
+    document.getElementById('uploadPathDisplay').textContent = currentPath === '/' ? '/' : currentPath;
     document.getElementById('uploadModal').classList.add('open');
   }
 
@@ -408,7 +408,7 @@
     // Update displays (if element exists)
     const qualityDisplay = document.getElementById('qualityDisplaySimple');
     if (qualityDisplay) {
-      qualityDisplay.textContent = '📦 ' + quality + '% JPEG';
+      qualityDisplay.textContent = quality + '% JPEG';
     }
 
     // Update converter variables (used by processImage and applyGrayscale)
@@ -859,7 +859,7 @@
         item.className = 'image-item cover-locked';
         item.title = `${img.width}×${img.height} - Cover image (locked)`;
         item.innerHTML = `
-          <span class="image-state-badge cover-badge">🔒</span>
+          <span class="image-state-badge cover-badge">□</span>
           <img src="${img.dataUrl}" alt="${img.name}" loading="lazy">
           <div class="image-name">${img.name}</div>
         `;
@@ -868,7 +868,7 @@
         item.className = 'image-item separator-locked';
         item.title = `${img.width}×${img.height} - Separator (locked)`;
         item.innerHTML = `
-          <span class="image-state-badge separator-badge">✦</span>
+          <span class="image-state-badge separator-badge">■</span>
           <img src="${img.dataUrl}" alt="${img.name}" loading="lazy">
           <div class="image-name">${img.name}</div>
         `;
@@ -1062,7 +1062,7 @@
   });
 
   function openFolderModal() {
-    document.getElementById('folderPathDisplay').textContent = currentPath === '/' ? '/ 🏠' : currentPath;
+    document.getElementById('folderPathDisplay').textContent = currentPath === '/' ? '/' : currentPath;
     document.getElementById('folderModal').classList.add('open');
     document.getElementById('folderName').value = '';
     setTimeout(() => document.getElementById('folderName').focus(), 50);
@@ -1117,7 +1117,7 @@
     items.forEach(it => {
       const div = document.createElement('div');
       div.style.marginBottom = '6px';
-      div.textContent = (it.isFolder ? '📁 ' : '📄 ') + it.path;
+      div.textContent = it.path + (it.isFolder ? '/' : '');
       listEl.appendChild(div);
     });
     document.getElementById('deleteModal').classList.add('open');
@@ -1408,7 +1408,7 @@ function applyDeviceTarget() {
 
   const summary = document.getElementById('convertSizeSummary');
   if (summary) {
-    summary.textContent = `📏 Max ${profile.width}×${profile.height}px`;
+    summary.textContent = `Max ${profile.width}×${profile.height}px`;
   }
   document.querySelectorAll('.device-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.value === DEVICE_TARGET);
@@ -1557,7 +1557,7 @@ function logSummary(originalSize, newSize, timeElapsed) {
 
   const summaryHtml = `
     <div class="log-summary">
-      <div class="log-summary-title">📊 Conversion Summary</div>
+      <div class="log-summary-title">Conversion Summary</div>
       <table class="log-summary-table">
         <tr><td>Images found</td><td class="highlight">${totalImages}</td></tr>
         <tr><td>Images processed</td><td>${totalOutput}${conversionStats.splitParts > conversionStats.splits ? ` (+${conversionStats.splitParts - conversionStats.splits} from splits)` : ''}</td></tr>
@@ -1670,7 +1670,7 @@ function finalizeBatchLog() {
   // Add batch summary
   const batchSummaryHtml = `
     <div class="log-summary">
-      <div class="log-summary-title">📊 Batch Conversion Summary</div>
+      <div class="log-summary-title">Batch Conversion Summary</div>
       <table class="log-summary-table">
         <tr><td>Files processed</td><td class="highlight">${batchStats.filesProcessed}</td></tr>
         <tr><td>Successful</td><td style="color:#27ae60">${batchStats.filesSucceeded}</td></tr>
@@ -3619,7 +3619,7 @@ function showFailedUploadsBanner() {
     item.className = 'failed-file-item';
     item.innerHTML = `
       <div class="failed-file-info">
-        <div class="failed-file-name">📄 ${escapeHtml(failedFile.name)}</div>
+        <div class="failed-file-name">${escapeHtml(failedFile.name)}</div>
         <div class="failed-file-error">Error: ${escapeHtml(failedFile.error)}</div>
       </div>
       <button class="retry-btn" onclick="retrySingleUpload(${index})">Retry</button>
@@ -3724,7 +3724,7 @@ function retryAllFailedUploads() {
 
   // Rename functions
   function openRenameModal(name, path) {
-    document.getElementById('renameItemName').textContent = '📄 ' + name;
+    document.getElementById('renameItemName').textContent = name;
     document.getElementById('renameItemPath').value = path;
     document.getElementById('renameNewName').value = name;
     document.getElementById('renameModal').classList.add('open');
@@ -3839,7 +3839,7 @@ function retryAllFailedUploads() {
   }
 
   function openMoveModal(name, path) {
-    document.getElementById('moveItemName').textContent = '📄 ' + name;
+    document.getElementById('moveItemName').textContent = name;
     document.getElementById('moveItemPath').value = path;
     document.getElementById('moveDestPath').value = currentPath === '/' ? '/' : currentPath;
     document.getElementById('moveModal').classList.add('open');
