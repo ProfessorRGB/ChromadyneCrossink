@@ -2,6 +2,20 @@
 
 > Entries up to and including v1.3.4 predate the Chromadyne rebrand and document this firmware's history under its previous name, CrossInk. They are preserved as-is.
 
+## [v1.4.0] - 2026-07-04
+
+First release as the Chromadyne Document Retrieval Unit.
+
+### Changed
+- Rebranded firmware as the Chromadyne Document Retrieval Unit (shown as Chromadyne DRU on-device), across the device UI, all 26 translations, the web portal, and documentation.
+- Boot and sleep screens carry the Chromadyne radar logomark.
+- Web portal restyled to the Chromadyne Industries design system: paper/ink ground, the four working colors, mono form-code controls, square corners, no emoji.
+- OTA updates now come from ProfessorRGB/ChromadyneCrossink releases.
+- CI and release builds run on GitHub-hosted runners.
+
+### Compatibility
+- On-device data formats, SD-card paths (`.crosspoint/`, `crossink-settings.json`), and settings keys are unchanged; upgrading from CrossInk v1.3.4 preserves settings, reading progress, and stats.
+
 ## [v1.3.4] - 2026-06-24
 
 ### Added
